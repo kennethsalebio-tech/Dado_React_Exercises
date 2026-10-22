@@ -1,24 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import Card from './components/ui/card'; 
+import Counter from './components/ui/Counter';
+import List from './components/ui/List';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Card
+        name="Dado"
+        description="This is a description of the card."
+      />
+      <Counter />
+      <List />
+    </>
   );
 }
 
