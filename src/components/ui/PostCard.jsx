@@ -8,6 +8,7 @@ export default function PostCard({ post }) {
                 <div className="post-header">
                 <span className="post-username">
                     {post.user?.name || 'Guest User'}
+                    
                 
                 </span>
 
