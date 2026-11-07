@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Post from './components/Post';
+import Post from './components/ui/Post';
 import reportWebVitals from './reportWebVitals';
 
 

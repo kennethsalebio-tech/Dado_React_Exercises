@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getPost, storePost } from '../../api/post';
-import './styles/post.css';
+import axios from '../../api/auth/axios';
+import '../styles/post.css';
 import PostCard from './PostCard';
 
 export default function Post() {
@@ -12,7 +12,7 @@ export default function Post() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await getPost();
+        const response = await axios.get('/post');
         setPosts(response.data.data || response.data);
       } catch (err) {
         console.error("Failed to load posts", err);
@@ -40,19 +40,17 @@ export default function Post() {
     setError('');
 
     try {
-      const response = await storePost({ message });
-
+      const response = await axios.post('/post', { message });
       const newPost = response.data.data || response.data;
 
       setPosts((prevPosts) => [newPost, ...prevPosts]);
       setMessage('');
-
     } catch (err) {
       console.error('Failed to create post', err);
-
       setError(
         err.response?.data?.message ||
-        'Failed to create post. Please try again.'
+        err.message ||
+        'Network Error: Check if backend server is running'
       );
     } finally {
       setProcessing(false);
@@ -79,7 +77,7 @@ export default function Post() {
           </div>
 
           {error && (
-            <div className="post-error">
+            <div className="post-error" style={{ color: 'red', marginTop: '8px' }}>
               {error}
             </div>
           )}

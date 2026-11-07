@@ -1,5 +1,5 @@
 import React from "react";
-import './styles/post-card.css';
+import '../styles/post-card.css';
 
 export default function PostCard({ post }) {
     return (
@@ -8,7 +8,7 @@ export default function PostCard({ post }) {
                 <div className="post-header">
                 <span className="post-username">
                     {post.user?.name || 'Guest User'}
-                    
+
                 
                 </span>
 
